@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multimedia Display</title>
+    <meta http-equiv="refresh" content="10"> <!-- Refresh every 10 seconds -->
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        img, video { max-width: 80%; height: auto; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>{{ content.text }}</h1>
+    <img src="/static/media/photos/sample.jpg" alt="Sample Photo">
+    <video controls autoplay loop muted>
+        <source src="/static/media/videos/sample.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</body>
+</html>
