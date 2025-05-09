@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Panel</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #111; color: white; }
+    button { font-size: 1.5rem; margin: 10px; padding: 15px; background: #444; color: white; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Choose a Display Category</h1>
+  <button onclick="setCategory('welcome')">Welcome</button>
+  <button onclick="setCategory('news')">News</button>
+  <button onclick="setCategory('events')">Events</button>
+  <script>
+    function setCategory(cat) {
+      const layouts = {
+        welcome: [
+          { type: 'image', src: '/media/photo1.jpg', zone: 'left' },
+          { type: 'video', src: '/media/video1.mp4', zone: 'right' },
+          { type: 'text', content: 'Welcome to Robotics Lab', zone: 'bottom' }
+        ],
+        news: [
+          { type: 'image', src: '/media/news1.jpg', zone: 'left' },
+          { type: 'text', content: 'Latest updates from campus...', zone: 'right' },
+          { type: 'text', content: 'Breaking News', zone: 'bottom' }
+        ],
+        events: [
+          { type: 'image', src: '/media/event1.jpg', zone: 'left' },
+          { type: 'video', src: '/media/eventvid.mp4', zone: 'right' },
+          { type: 'text', content: 'Upcoming Events', zone: 'bottom' }
+        ]
+      };
+      fetch('/update_content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ layout: layouts[cat] })
+      });
+    }
+  </script>
+</body>
+</html>
